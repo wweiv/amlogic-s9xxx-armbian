@@ -278,14 +278,16 @@ on:
           - server
           - desktop
           - beta
-      # builder_name:
-      #   description: "Set Armbian builder signature."
-      #   required: false
-      #   default: "ophub"
-      #   type: choice
-      #   options:
-      #     - ophub
-      #     - angel
+      builder_name:
+        description: "Set Armbian builder signature."
+        required: false
+        default: "ophub"
+        type: choice
+        options:
+          - ophub
+          - angel
+          - wweiv
+          - ""
       config_board:
         description: "Set the base Armbian board name."
         required: false
@@ -419,7 +421,7 @@ jobs:
           kernel_repo: ${{ inputs.kernel_repo }}
           kernel_usage: ${{ inputs.kernel_usage }}
           armbian_fstype: ${{ inputs.armbian_fstype }}
-          # builder_name: ${{ inputs.builder_name }}
+          builder_name: ${{ inputs.builder_name }}
 
       - name: Upload rebuilt images to Release
         uses: ncipollo/release-action@main
